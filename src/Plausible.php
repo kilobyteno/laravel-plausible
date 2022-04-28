@@ -207,9 +207,11 @@ class Plausible
      * @param string $property
      * @return array
      */
-    public static function getBreakdown(string $domain, string $property = 'visit:source'): array
+    public static function getBreakdown(string $domain, string $property = 'visit:source', string $period = '30d', array $metrics = ['visitors']): array
     {
+        $metrics = array_intersect($metrics, self::$allowedMetrics);
         $property = in_array($property, self::$allowedPeriods) ? $property : 'visit:source';
+        $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
         $result = Http::withHeaders([
                 'X-Forwarded-For' => request()->ip(),
                 'User-Agent' => request()->userAgent(),
@@ -220,6 +222,8 @@ class Plausible
                     [
                         'site_id' => $domain,
                         'property' => $property,
+                        'period' => $period,
+                        'metrics' => implode(',', $metrics),
                     ]
                 )
                 ->json()['results'] ?? [];
