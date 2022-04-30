@@ -6,7 +6,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/kilobyteno/laravel-plausible/Check%20&%20fix%20styling?label=code%20style)](https://github.com/kilobyteno/laravel-plausible/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/kilobyteno/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/kilobyteno/laravel-plausible)
 
-A simple package for communicating with the Plausible API
+A simple package for communicating with the Plausible API within Laravel.
 
 ## Installation
 
