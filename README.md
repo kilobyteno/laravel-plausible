@@ -99,15 +99,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Todo:
-- [ ] Add support for compare on aggregate metrics
-- [ ] Add support for filters on:
-  - [ ] Aggregate
-  - [ ] Timeseries
-  - [ ] Breakdown
-- [ ] Add support for interval on timeseries
-- [ ] Add support for limit and page on breakdown
-
 ## Security Vulnerabilities
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
