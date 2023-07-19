@@ -126,7 +126,7 @@ class Plausible
     {
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
 
-        return self::getAggregate($domain, $period, ['visitors'])['visitors']['value'] ?? 0;
+        return self::getAggregate($domain, $period)['visitors']['value'] ?? 0;
     }
 
     /**
