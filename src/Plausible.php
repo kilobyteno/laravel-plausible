@@ -28,6 +28,20 @@ class Plausible
         'visit:country',
     ];
 
+    public static function getHeaders(): array
+    {
+        return [
+            'X-Forwarded-For' => request()->ip(),
+            'User-Agent' => request()->userAgent(),
+            'Authorization' => 'Bearer ' . config('plausible.api_key'),
+        ];
+    }
+
+    public static function getBaseUrl(): string
+    {
+        return config('plausible.api_url');
+    }
+
     /**
      * @return array
      */
@@ -63,13 +77,9 @@ class Plausible
     {
         $metrics = array_intersect($metrics, self::$allowedMetrics);
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
-        $result = Http::withHeaders([
-                'X-Forwarded-For' => request()->ip(),
-                'User-Agent' => request()->userAgent(),
-                'Authorization' => 'Bearer ' . config('plausible.api_key'),
-            ])
+        $result = Http::withHeaders(self::getHeaders())
                 ->get(
-                    config('plausible.api_url') . '/stats/aggregate',
+                    self::getBaseUrl() . '/stats/aggregate',
                     [
                         'site_id' => $domain,
                         'period' => $period,
@@ -159,13 +169,9 @@ class Plausible
      */
     public static function getRealtimeVisitors(string $domain): int
     {
-        $result = Http::withHeaders([
-            'X-Forwarded-For' => request()->ip(),
-            'User-Agent' => request()->userAgent(),
-            'Authorization' => 'Bearer ' . config('plausible.api_key'),
-        ])
+        $result = Http::withHeaders(self::getHeaders())
             ->get(
-                config('plausible.api_url') . '/stats/realtime/visitors',
+                self::getBaseUrl() . '/stats/realtime/visitors',
                 [
                     'site_id' => $domain,
                 ]
@@ -184,13 +190,9 @@ class Plausible
     public static function getTimeseries(string $domain, string $period = '30d'): array
     {
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
-        $result = Http::withHeaders([
-                'X-Forwarded-For' => request()->ip(),
-                'User-Agent' => request()->userAgent(),
-                'Authorization' => 'Bearer ' . config('plausible.api_key'),
-            ])
+        $result = Http::withHeaders(self::getHeaders())
                 ->get(
-                    config('plausible.api_url') . '/stats/timeseries',
+                    self::getBaseUrl() . '/stats/timeseries',
                     [
                         'site_id' => $domain,
                         'period' => $period,
@@ -212,13 +214,9 @@ class Plausible
         $metrics = array_intersect($metrics, self::$allowedMetrics);
         $property = in_array($property, self::$allowedPeriods) ? $property : 'visit:source';
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
-        $result = Http::withHeaders([
-                'X-Forwarded-For' => request()->ip(),
-                'User-Agent' => request()->userAgent(),
-                'Authorization' => 'Bearer ' . config('plausible.api_key'),
-            ])
+        $result = Http::withHeaders(self::getHeaders())
                 ->get(
-                    config('plausible.api_url') . '/stats/breakdown',
+                    self::getBaseUrl() . '/stats/breakdown',
                     [
                         'site_id' => $domain,
                         'property' => $property,
