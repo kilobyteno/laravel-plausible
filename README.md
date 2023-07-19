@@ -85,6 +85,18 @@ returns [
 
 ```
 
+### Catching exceptions
+
+```php
+use Kilobyteno\LaravelPlausible\Exceptions\PlausibleAPIException;
+
+try {
+    $visitors = Plausible::getVisitors($domain->name);
+} catch (PlausibleAPIException $e) {
+    // Handle exception
+}
+```
+
 ## Testing
 
 ```bash

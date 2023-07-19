@@ -3,6 +3,7 @@
 namespace Kilobyteno\LaravelPlausible;
 
 use Illuminate\Support\Facades\Http;
+use Kilobyteno\LaravelPlausible\Exceptions\PlausibleAPIException;
 
 class Plausible
 {
@@ -72,6 +73,7 @@ class Plausible
      * @param string $period
      * @param array $metrics
      * @return array
+     * @throws PlausibleAPIException
      */
     private static function getAggregate(string $domain, string $period = '30d', array $metrics = ['visitors']): array
     {
@@ -86,9 +88,13 @@ class Plausible
                         'metrics' => implode(',', $metrics),
                     ]
                 )
-                ->json()['results'] ?? [];
+                ->json();
 
-        return $result;
+        if (isset($result['error'])) {
+            throw new PlausibleAPIException($result['error']);
+        }
+
+        return $result['results'] ?? [];
     }
 
     /**
@@ -97,6 +103,7 @@ class Plausible
      * @param string $period
      * @param array $metrics
      * @return array
+     * @throws PlausibleAPIException
      */
     public static function get(string $domain, string $period = '30d', array $metrics = ['visitors']): array
     {
@@ -113,6 +120,7 @@ class Plausible
      * @param string $domain
      * @param string $period
      * @return int
+     * @throws PlausibleAPIException
      */
     public static function getVisitors(string $domain, string $period = '30d'): int
     {
@@ -126,6 +134,7 @@ class Plausible
      * @param string $domain
      * @param string $period
      * @return int
+     * @throws PlausibleAPIException
      */
     public static function getPageviews(string $domain, string $period = '30d'): int
     {
@@ -139,6 +148,7 @@ class Plausible
      * @param string $domain
      * @param string $period
      * @return float
+     * @throws PlausibleAPIException
      */
     public static function getBounceRate(string $domain, string $period = '30d'): float
     {
@@ -152,6 +162,7 @@ class Plausible
      * @param string $domain
      * @param string $period
      * @return float
+     * @throws PlausibleAPIException
      */
     public static function getVisitDuration(string $domain, string $period = '30d'): float
     {
@@ -164,6 +175,7 @@ class Plausible
      *
      * @param string $domain
      * @return int
+     * @throws PlausibleAPIException
      */
     public static function getRealtimeVisitors(string $domain): int
     {
@@ -176,7 +188,11 @@ class Plausible
             )
             ->json();
 
-        return $result;
+        if (isset($result['error'])) {
+            throw new PlausibleAPIException($result['error']);
+        }
+
+        return $result ?? 0;
     }
 
     /**
@@ -184,6 +200,7 @@ class Plausible
      * @param string $domain
      * @param string $period
      * @return array
+     * @throws PlausibleAPIException
      */
     public static function getTimeseries(string $domain, string $period = '30d'): array
     {
@@ -196,9 +213,13 @@ class Plausible
                         'period' => $period,
                     ]
                 )
-                ->json()['results'] ?? [];
+                ->json();
 
-        return $result;
+        if (isset($result['error'])) {
+            throw new PlausibleAPIException($result['error']);
+        }
+
+        return $result['results'] ?? [];
     }
 
     /**
@@ -208,6 +229,7 @@ class Plausible
      * @param string $period
      * @param array $metrics
      * @return array
+     * @throws PlausibleAPIException
      */
     public static function getBreakdown(string $domain, string $property = 'visit:source', string $period = '30d', array $metrics = ['visitors']): array
     {
@@ -224,8 +246,12 @@ class Plausible
                         'metrics' => implode(',', $metrics),
                     ]
                 )
-                ->json()['results'] ?? [];
+                ->json();
 
-        return $result;
+        if (isset($result['error'])) {
+            throw new PlausibleAPIException($result['error']);
+        }
+
+        return $result['results'] ?? [];
     }
 }
