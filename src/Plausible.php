@@ -110,6 +110,7 @@ class Plausible
         $metrics = array_intersect($metrics, self::$allowedMetrics);
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
         $result = self::getAggregate($domain, $period, $metrics);
+
         return array_map(function ($item) {
             return $item['value'];
         }, $result);
