@@ -207,6 +207,8 @@ class Plausible
      *
      * @param string $domain
      * @param string $property
+     * @param string $period
+     * @param array $metrics
      * @return array
      */
     public static function getBreakdown(string $domain, string $property = 'visit:source', string $period = '30d', array $metrics = ['visitors']): array
