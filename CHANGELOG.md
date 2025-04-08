@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-plausible` will be documented in this file.
 
+## 1.3.0 - 2025-04-08
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/kilobyteno/laravel-plausible/pull/23
+* Bump SethCohen/github-releases-to-discord from 1.15.0 to 1.15.1 by @dependabot in https://github.com/kilobyteno/laravel-plausible/pull/24
+* Bump SethCohen/github-releases-to-discord from 1.15.1 to 1.16.2 by @dependabot in https://github.com/kilobyteno/laravel-plausible/pull/25
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/kilobyteno/laravel-plausible/pull/26
+* Add support for Laravel 12 and drop Laravel 10 and below
+
+**Full Changelog**: https://github.com/kilobyteno/laravel-plausible/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2024-05-21
 
 ### What's Changed
