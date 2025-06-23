@@ -28,7 +28,7 @@ jobs:
           file_pattern: CHANGELOG.md
 
       - name: Post release to Discord
-        uses: SethCohen/github-releases-to-discord@v1.16.2
+        uses: SethCohen/github-releases-to-discord@v1.19.0
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           color: "16753920"
