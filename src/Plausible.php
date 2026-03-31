@@ -235,7 +235,7 @@ class Plausible
     public static function getBreakdown(string $domain, string $property = 'visit:source', string $period = '30d', array $metrics = ['visitors']): array
     {
         $metrics = array_intersect($metrics, self::$allowedMetrics);
-        $property = in_array($property, self::$allowedPeriods) ? $property : 'visit:source';
+        $property = in_array($property, self::$allowedProperties, true) ? $property : 'visit:source';
         $period = in_array($period, self::$allowedPeriods) ? $period : '30d';
         $result = Http::withHeaders(self::getHeaders())
                 ->get(
