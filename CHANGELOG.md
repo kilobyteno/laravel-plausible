@@ -2,6 +2,33 @@
 
 All notable changes to `laravel-plausible` will be documented in this file.
 
+## 1.4.0 - 2026-03-31
+
+### What's Changed
+
+* Add support for Laravel 13 by @dsbilling in https://github.com/kilobyteno/laravel-plausible/pull/36
+  
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/27
+  
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/28
+  
+* Bump SethCohen/github-releases-to-discord from 1.16.2 to 1.19.0 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/29
+  
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/30
+  
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/31
+  
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/32
+  
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/33
+  
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/34
+  
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/kilobyteno/laravel-plausible/pull/35
+  
+
+**Full Changelog**: https://github.com/kilobyteno/laravel-plausible/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2025-04-08
 
 ### What's Changed
